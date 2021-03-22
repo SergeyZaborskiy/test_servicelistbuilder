@@ -7,10 +7,9 @@ import javax.persistence.Id;
 @Entity
 public class Airplane {
     //Primary key
-
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
 
     //Variables
     private String model;
@@ -33,11 +32,11 @@ public class Airplane {
     }
 
     //Getters and Setters
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

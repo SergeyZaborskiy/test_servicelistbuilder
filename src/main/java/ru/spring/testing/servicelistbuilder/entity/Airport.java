@@ -6,33 +6,32 @@ import javax.persistence.Id;
 
 @Entity
 public class Airport {
-    //Key
+    //Primary key
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
 
     //Variable
     private String name;
     private String icao;
-    private String county;
+    private String country;
 
     //Constructor
     protected Airport() {
     }
 
-    public Airport(int id, String name, String icao, String county) {
+    public Airport(String name, String icao, String county) {
         this.name = name;
         this.icao = icao;
-        this.county = county;
+        this.country = county;
     }
 
     //Getters and Setters
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -52,11 +51,12 @@ public class Airport {
         this.icao = icao;
     }
 
-    public String getCounty() {
-        return county;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCounty(String county) {
-        this.county = county;
+    public void setCountry(String county) {
+        this.country = county;
     }
+
 }

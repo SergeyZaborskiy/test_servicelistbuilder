@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Airports user interface</title>
+</head>
+<body>
+<h2>Airports user interface</h2>
+<br/>
+<hr>
+<a href="/airplanes/new">Create new airport</a>
+<br/>
+<br/>
+<table>
+    <caption>List of airplanes</caption>
+    <tr>
+        <th>Model</th>
+        <th>Mass</th>
+        <th>maxFuelCapacity</th>
+        <th>maxNumberOfPassenger</th>
+        <th>maxNumberOfPassenger</th>
+    </tr>
+    <tr th:each="airport:${airports}">
+
+        <td th:text = "${airport.name}">VALUE</td>
+        <td th:text = "${airport.country}">VALUE</td>
+        <td th:text = "${airport.icao}">VALUE</td>
+        <td>
+            <form th:action="@{/airports/{id}(id=${airport.getId()})}" th:method="PUT">
+                <input type="submit" value="Edit">
+            </form>
+            <form th:action="@{/airports/{id}(id=${airport.getId()})}" th:method="DELETE">
+            <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<hr>
+<a href="/">Return to main page</a>
+</body>
+</html>
