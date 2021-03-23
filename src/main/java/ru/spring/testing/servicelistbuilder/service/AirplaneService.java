@@ -22,14 +22,14 @@ public class AirplaneService {
         airplaneRepository.save(airplane);
     }
 
-    //Show list of all airports in database
+    //Show list of all airplanes in database
     @Transactional
-    public List<Airplane> showAllAirportList(){
+    public List<Airplane> showAllAirplaneList(){
         List<Airplane> airportList = (List<Airplane>) airplaneRepository.findAll();
         return  airportList;
     }
 
-    //Delete airport
+    //Delete airplane
     @Transactional
     public void deleteAirplane(Airplane airplane){
         airplaneRepository.delete(airplane);
@@ -39,9 +39,9 @@ public class AirplaneService {
         airplaneRepository.deleteAirplaneById(id);
     }
 
-    //Find airport by Id
+    //Find airplane by Id
     @Transactional
-    public Airport findAirplaneById(long id){
+    public Airplane findAirplaneById(long id){
         return airplaneRepository.findAirplaneById(id);
     }
 }

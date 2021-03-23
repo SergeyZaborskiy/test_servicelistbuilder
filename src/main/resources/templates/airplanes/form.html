@@ -2,27 +2,28 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Airport Create and Update form</title>
+    <title>Airplane Create and Update form</title>
 </head>
 <body>
-<h2>Create or Update airport</h2>
+<h2>Create or Update airplane</h2>
 
 <form th:action="@{/airplanes}" th:object="${airplane}" method="POST">
     <input type="hidden" th:field="*{id}">
     <label>Model</label>
     <input type="text" th:field="*{model}">
-    <br>
-    <label>Mass</label>
+    <br/><br/>
+    <label>Mass : </label>
     <input type="text" th:field="*{mass}">
-    <br>
-    <label>maxFuelCapacity</label>
+    <br/><br/>
+    <label>maxFuelCapacity : </label>
     <input type="text" th:field="*{maxFuelCapacity}">
-    <br>
-    <label>maxNumberOfPassenger</label>
+    <br/><br/>
+    <label>maxNumberOfPassenger : </label>
     <input type="text" th:field="*{maxNumberOfPassenger}">
-    <br>
+    <br/><br/>
     <input type="submit" value="OK">
 </form>
+
 <br>
 <hr>
 <br>

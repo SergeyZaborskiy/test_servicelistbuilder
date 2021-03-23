@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.spring.testing.servicelistbuilder.entity.Airplane;
-import ru.spring.testing.servicelistbuilder.entity.Airport;
 import ru.spring.testing.servicelistbuilder.service.AirplaneService;
 
 
@@ -19,22 +18,23 @@ public class AirplanesController {
     AirplaneService airplaneService;
 
     @GetMapping
-    public String showAirportsPage(Model model){
-        List<Airplane> airplaneList = airplaneService.showAllAirportList();
+    public String showAirplanePage(Model model){
+        List<Airplane> airplaneList = airplaneService.showAllAirplaneList();
         model.addAttribute("airplanes", airplaneList);
         return "airplanes/index";
     }
 
     @GetMapping("/new")
-    public String showNewAirportForm(@ModelAttribute("airplane") Airplane airplane, Model model) {
-        model.addAttribute(airplane);
-        return "airports/form";
+    public String showNewAirplaneForm(Model model) {
+        Airplane airplane = new Airplane(" ", " ", 0, 0);
+        model.addAttribute("airplane", airplane);
+        return "airplanes/form";
     }
 
     @PostMapping
-    public String addNewAirport(@ModelAttribute("airplane") Airplane airplane, Model model) {
+    public String addNewAirplane(@ModelAttribute("airplane") Airplane airplane, Model model) {
         airplaneService.saveOrUpdate(airplane);
-        return "redirect:/airports";
+        return "redirect:/airplanes";
     }
 
     @DeleteMapping("/{id}")
@@ -45,8 +45,8 @@ public class AirplanesController {
 
     @PutMapping("/{id}")
     public String findAirplaneById(@PathVariable long id, Model model){
-        Airport airport = airplaneService.findAirplaneById(id);
-        model.addAttribute("airplane", airport);
+        Airplane airplane = airplaneService.findAirplaneById(id);
+        model.addAttribute("airplane", airplane);
         return "airplanes/form";
     }
 

@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class ServiceList {
+public class AirplaneMaintenance {
     //Primary key
     @Id
     @GeneratedValue
@@ -16,10 +16,10 @@ public class ServiceList {
     private String serviceName;
 
     //Constructor
-    public ServiceList() {
+    public AirplaneMaintenance() {
     }
 
-    public ServiceList(String serviceName) {
+    public AirplaneMaintenance(String serviceName) {
         this.serviceName = serviceName;
     }
 

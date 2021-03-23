@@ -10,6 +10,6 @@ public interface AirplaneRepository extends CrudRepository<Airplane, Long> {
 
     public void deleteAirplaneById(long id);
 
-    public Airport findAirplaneById(long id);
+    public Airplane findAirplaneById(long id);
 
 }

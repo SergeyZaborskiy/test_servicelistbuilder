@@ -13,25 +13,23 @@ public class Airplane {
 
     //Variables
     private String model;
-
     private String mass;
-
-    private String maxFuelCapacity;
-
+    private int maxFuelCapacity;
     private int maxNumberOfPassenger;
 
     //Constructors
     protected Airplane() {
     }
 
-    public Airplane(String model, String mass, String maxFuelCapacity, int maxNumberOfPassenger) {
+    public Airplane(String model, String mass, int maxFuelCapacity, int maxNumberOfPassenger) {
         this.model = model;
         this.mass = mass;
         this.maxFuelCapacity = maxFuelCapacity;
         this.maxNumberOfPassenger = maxNumberOfPassenger;
     }
 
-    //Getters and Setters
+//Getters and Setters
+
     public long getId() {
         return id;
     }
@@ -56,11 +54,11 @@ public class Airplane {
         this.mass = mass;
     }
 
-    public String getMaxFuelCapacity() {
+    public int getMaxFuelCapacity() {
         return maxFuelCapacity;
     }
 
-    public void setMaxFuelCapacity(String maxFuelCapacity) {
+    public void setMaxFuelCapacity(int maxFuelCapacity) {
         this.maxFuelCapacity = maxFuelCapacity;
     }
 
@@ -71,5 +69,4 @@ public class Airplane {
     public void setMaxNumberOfPassenger(int maxNumberOfPassenger) {
         this.maxNumberOfPassenger = maxNumberOfPassenger;
     }
-
 }

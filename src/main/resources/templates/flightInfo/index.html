@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>FlightInfo List interface</title>
+</head>
+<body>
+<h2>FlightInfo List interface</h2>
+<br/>
+<hr>
+<a href="/flightInfo/new">Create new FlightInfo</a>
+<br/>
+<br/>
+<table border="1" width="1024">
+    <caption align="center">FlightInfo List</caption>
+    <tr>
+        <th>RouteID</th>
+        <th>Airport of arrival</th>
+        <th>ICAO</th>
+        <th>Country of arrivals</th>
+        <th>Airplane model</th>
+        <th>Airplane max fuel</th>
+        <th>Passengers on board</th>
+        <th>Time of parking</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="flightInfo:${flightInfoList}">
+
+        <td th:text = "${flightInfo.routeID}">VALUE</td>
+        <td th:text = "${flightInfo.airportOfArrival.name}">VALUE</td>
+        <td th:text = "${flightInfo.airportOfArrival.icao}">VALUE</td>
+        <td th:text = "${flightInfo.airportOfArrival.country}">VALUE</td>
+        <td th:text = "${flightInfo.typeOfPlane.model}">VALUE</td>
+        <td th:text = "${flightInfo.typeOfPlane.maxFuelCapacity}">VALUE</td>
+        <td th:text = "${flightInfo.timeOfParking}">VALUE</td>
+        <td th:text = "${flightInfo.numberOfPassengers}">VALUE</td>
+        <td>
+            <form th:action="@{/flightInfo/{id}(id=${flightInfo.getId()})}" th:method="PUT">
+                <input type="submit" value="Edit">
+            </form>
+            <form th:action="@{/flightInfo/{id}(id=${flightInfo.getId()})}" th:method="DELETE">
+            <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<hr>
+<a href="/">Return to main page</a>
+</body>
+</html>

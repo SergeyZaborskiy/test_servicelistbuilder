@@ -11,13 +11,13 @@
 <a href="/airports/new">Create new airport</a>
 <br/>
 <br/>
-<table>
+<table border="1" width="1024">
     <caption>List of airports</caption>
     <tr>
         <th>Name</th>
         <th>Country</th>
         <th>ICAO</th>
-        <th>Operation</th>
+        <th>Action</th>
     </tr>
     <tr th:each="airport:${airports}">
 
@@ -26,10 +26,10 @@
         <td th:text = "${airport.icao}">VALUE</td>
         <td>
             <form th:action="@{/airports/{id}(id=${airport.getId()})}" th:method="PUT">
-                <input type="submit" value="Edit">
+                <input type="submit" value="Edit" width="90">
             </form>
             <form th:action="@{/airports/{id}(id=${airport.getId()})}" th:method="DELETE">
-            <input type="submit" value="Delete">
+            <input type="submit" value="Delete" width="90">
             </form>
         </td>
     </tr>
