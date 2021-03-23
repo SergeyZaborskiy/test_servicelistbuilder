@@ -1,45 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Main page with documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/webjars/jquery/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="webjars/bootstrap/4.6.0-1/css/bootstrap.min.css"
+          th:href="@{webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}"/>
+    <script src="webjars/jquery/3.5.1/jquery.min.js" th:href="@{webjars/jquery/3.5.1/jquery.min.js}"></script>
 </head>
+
 <body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Service builder</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Main Page
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/airports">Airports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/airplanes">Airplanes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/flightInfo">FlightInfo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Body -->
 <div class="container">
-<h2>Hello and welcome to main page!</h2>
-<p>List of Entity to show:</p>
-<br>
-<a href="/">Users</a>
-<br>
-<a href="/">Personal Information</a>
-<br>
-<a href="/">Airplane Maintenance</a>
-<br>
-<a href="/flightInfo">FlightInfo</a>
-<br>
-<a href="/airplanes">Airplane models</a>
-<br>
-<a href="/airports">Airports</a>
-    <br/><br/>
-    <form>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <br/>
+    <h1>Hello and welcome to main page!</h1><br>
+    <p>API documentation</p>
+    <p>List of Entity to show:</p>
+    <br>
+    <p>1.Users</p>
+    <p>2.Personal Information</p>
+    <p>3.Airplane Maintenance</p>
+    <p>4.FlightInfo</p>
+    <p>5.Airplane models</p>
+    <p>6.Airports</p>
 </div>
+<!-- Bootstrap script -->
+<script src="webjars/bootstrap/4.6.0-1/js/bootstrap.js" th:href="@{webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
 </body>
 </html>

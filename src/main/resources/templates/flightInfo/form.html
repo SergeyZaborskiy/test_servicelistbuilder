@@ -1,43 +1,89 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>FlightInfo Create and Update form</title>
+    <title>Flight Info form</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}"
+          type="text/css"/>
+    <script src="../webjars/jquery/3.5.1/jquery.min.js" th:href="@{../webjars/jquery/3.5.1/jquery.min.js}"></script>
 </head>
-<body>
-<h2>Create or Update FlightInfo</h2>
 
-<form th:action="@{/flightInfo}" th:object="${flightInfo}" method="POST">
-    <input type="hidden" th:field="*{id}">
-    <label>Route ID</label>
-    <input type="text" th:field="*{routeID}">
-    <br/><br/>
-    <label>Time of Parking</label>
-    <input type="text" th:field="*{timeOfParking}">
-    <br/><br/>
-    <label>Number of passengers</label>
-    <input type="text" th:field="*{numberOfPassengers}">
-    <br/><br/>
-    <label>Model of airplane</label>
-    <select th:field="*{typeOfPlaneID}">
-        <option th:each="airplane:${airplanes}" th:value="${airplane.id}" th:text="${airplane.model}"
-                th:selected="${airplane.id==typeOfPlaneID}"></option>
-    </select>
-    <br/><br/>
-    <label>Airport of arrival</label>
-    <select th:field="*{airportOfArrivalID}">
-        <option th:each="airport:${airports}" th:value="${airport.id}" th:text="${airport.name} + ' ' + ${airport.icao}"
-                th:selected="${airport.id==airportOfArrivalID}">
-        </option>
-    </select>
-    <br/><br/>
-    <input type="submit" value="OK">
-</form>
-<br>
-<hr>
-<br>
-<a href="/airports">go to FlightInfo list</a>
-<br>
-<a href="/">go to Main page</a>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Service builder</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarResponsive"
+                data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Main Page
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/airports">Airports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/airplanes">Airplanes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/flightInfo">FlightInfo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Body -->
+<div class="container">
+    <br/>
+    <h2>Flight Info form</h2>
+
+    <form method="POST" th:action="@{/flightInfo}" th:object="${flightInfo}">
+        <input th:field="*{id}" type="hidden">
+        <label>Route ID</label>
+        <input th:field="*{routeID}" type="text">
+        <br/><br/>
+        <label>Time of Parking</label>
+        <input th:field="*{timeOfParking}" type="text">
+        <br/><br/>
+        <label>Number of passengers</label>
+        <input th:field="*{numberOfPassengers}" type="text">
+        <br/><br/>
+        <label>Model of airplane</label>
+        <select th:field="*{typeOfPlaneID}">
+            <option th:each="airplane:${airplanes}" th:selected="${airplane.id==typeOfPlaneID}"
+                    th:text="${airplane.model}"
+                    th:value="${airplane.id}"></option>
+        </select>
+        <br/><br/>
+        <label>Airport of arrival</label>
+        <select th:field="*{airportOfArrivalID}">
+            <option th:each="airport:${airports}" th:selected="${airport.id==airportOfArrivalID}"
+                    th:text="${airport.name} + ' ' + ${airport.icao}"
+                    th:value="${airport.id}">
+            </option>
+        </select>
+        <br/><br/>
+        <input type="submit" value="OK">
+    </form>
+    <br>
+    <hr>
+    <br>
+    <a href="/airports">go to FlightInfo list</a>
+    <br>
+    <a href="/">go to Main page</a>
+</div>
+<!-- Bootstrap script -->
+<script src="../webjars/bootstrap/4.6.0-1/js/bootstrap.js"
+        th:href="@{../webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
 </body>
 </html>

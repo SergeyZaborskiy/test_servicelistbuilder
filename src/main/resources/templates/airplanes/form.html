@@ -1,34 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Airplane Create and Update form</title>
+    <title>Airplane form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link type="text/css" rel="stylesheet" href="../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css"
+          th:href="@{../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}"/>
+    <script src="../webjars/jquery/3.5.1/jquery.min.js" th:href="@{../webjars/jquery/3.5.1/jquery.min.js}"></script>
 </head>
+
 <body>
-<h2>Create or Update airplane</h2>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Service builder</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Main Page
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/airports">Airports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/airplanes">Airplanes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/flightInfo">FlightInfo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Body -->
+<div class="container">
+    <br>
+    <h1>Airplane form</h1>
+    <br>
 
-<form th:action="@{/airplanes}" th:object="${airplane}" method="POST">
-    <input type="hidden" th:field="*{id}">
-    <label>Model</label>
-    <input type="text" th:field="*{model}">
-    <br/><br/>
-    <label>Mass : </label>
-    <input type="text" th:field="*{mass}">
-    <br/><br/>
-    <label>maxFuelCapacity : </label>
-    <input type="text" th:field="*{maxFuelCapacity}">
-    <br/><br/>
-    <label>maxNumberOfPassenger : </label>
-    <input type="text" th:field="*{maxNumberOfPassenger}">
-    <br/><br/>
-    <input type="submit" value="OK">
-</form>
+    <form th:action="@{/airplanes}" th:object="${airplane}" method="POST">
 
-<br>
-<hr>
-<br>
-<a href="/airports">go to Airplane list</a>
-<br>
-<a href="/">go to Main page</a>
+        <input type="hidden" th:field="*{id}">
+        <!-- Airplane model -->
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Airplane model</span>
+            <input type="text" class="form-control" th:field="*{model}" aria-describedby="basic-addon1">
+        </div>
+        <!-- Airplane mass -->
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2">Airplane mass</span>
+            <input type="text" class="form-control" th:field="*{mass}" aria-describedby="basic-addon2">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Fuel capacity</span>
+            <input type="text" class="form-control" th:field="*{maxFuelCapacity}" aria-describedby="basic-addon3">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon4">Maximum Passangers</span>
+            <input type="text" class="form-control" th:field="*{maxNumberOfPassenger}" aria-describedby="basic-addon4">
+        </div>
+        <input type="submit" value="OK">
+    </form>
+
+
+    <br>
+    <hr>
+    <br>
+    <a href="/airports">go to Airplane list</a>
+    <br>
+    <a href="/">go to Main page</a>
+</div>
+<!-- Bootstrap script -->
+<script src="../webjars/bootstrap/4.6.0-1/js/bootstrap.js"
+        th:href="@{../webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
 </body>
 </html>
