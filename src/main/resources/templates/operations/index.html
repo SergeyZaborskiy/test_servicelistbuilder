@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Main page with documentation</title>
+    <title>Operation user interface</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link type="text/css" rel="stylesheet" href="webjars/bootstrap/4.6.0-1/css/bootstrap.min.css"
           th:href="@{webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}"/>
@@ -36,9 +36,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/flightInfo">FlightInfo</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/operations">Operations</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -46,17 +43,18 @@
 <!-- Body -->
 <div class="container">
     <br/>
-    <h1>Hello and welcome to main page!</h1><br>
-    <p>API documentation</p>
-    <p>List of Entity to show:</p>
-    <br>
-    <p>1.Users</p>
-    <p>2.Personal Information</p>
-    <p>3.Airplane Maintenance</p>
-    <p>4.FlightInfo</p>
-    <p>5.Airplane models</p>
-    <p>6.Airports</p>
+    <h1>Operation user interface</h1>
+    <br/>
+    <hr>
+    <a class="btn btn-outline-primary" href="/operations/new" role="button">Create new operation group</a>
+    <br/><br/>
+    <div th:each="operation:${operations}">
+        <p th:text="*{name}"/>
+    </div>
 </div>
+<hr>
+<br/>
+<a class="btn btn-outline-primary" href="/" role="button">Return to main page</a>
 <!-- Bootstrap script -->
 <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.js" th:href="@{webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
 </body>
