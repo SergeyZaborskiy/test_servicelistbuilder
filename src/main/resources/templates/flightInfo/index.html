@@ -46,7 +46,7 @@
     <h1>FlightInfo List interface</h1>
     <br/>
     <hr>
-    <a href="/flightInfo/new">Create new FlightInfo</a>
+    <a class="btn btn-outline-primary" href="/flightInfo/new" role="button">Create new FlightInfo</a>
     <br/>
     <br/>
     <table class="table caption-top">
@@ -73,18 +73,20 @@
             <td th:text="${flightInfo.timeOfParking}">VALUE</td>
             <td th:text="${flightInfo.numberOfPassengers}">VALUE</td>
             <td>
-                <form th:action="@{/flightInfo/{id}(id=${flightInfo.getId()})}" th:method="PUT">
-                    <input type="submit" value="Edit">
-                </form>
-                <form th:action="@{/flightInfo/{id}(id=${flightInfo.getId()})}" th:method="DELETE">
-                    <input type="submit" value="Delete">
-                </form>
+                <div class="btn-group">
+                    <form th:action="@{/flightInfo/{id}(id=${flightInfo.getId()})}" th:method="PUT">
+                        <input class="btn btn-outline-success" type="submit" value="Edit">
+                    </form>
+                    <form th:action="@{/flightInfo/{id}(id=${flightInfo.getId()})}" th:method="DELETE">
+                        <input class="btn btn-outline-danger" type="submit" value="Delete">
+                    </form>
+                </div>
             </td>
         </tr>
     </table>
     <br>
     <hr>
-    <a href="/">Return to main page</a>
+    <a class="btn btn-outline-primary" href="/" role="button">Return to main page</a>
 </div>
 <!-- Bootstrap script -->
 <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.js" th:href="@{webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>

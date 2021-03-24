@@ -45,25 +45,33 @@
     <br/>
     <h1>Airport form</h1>
     <br/>
+    <!-- Thymeleaf main form -->
     <form th:action="@{/airports}" th:object="${airport}" method="POST">
         <input type="hidden" th:field="*{id}">
-        <label>Name</label>
-        <input type="text" th:field="*{name}">
-        <br/><br/>
-        <label>Country</label>
-        <input type="text" th:field="*{country}">
-        <br/><br/>
-        <label>ICAO</label>
-        <input type="text" th:field="*{icao}">
-        <br/><br/>
-        <input type="submit" value="OK">
+        <!-- Name input -->
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Name</span>
+            <input class="form-control" type="text" th:field="*{name}" aria-describedby="basic-addon1">
+        </div>
+        <!-- Country input -->
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2">Country</span>
+            <input class="form-control" type="text" th:field="*{country}" aria-describedby="basic-addon2">
+        </div>
+        <!-- ICAO input -->
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">ICAO</span>
+            <input class="form-control" type="text" th:field="*{icao}" aria-describedby="basic-addon3">
+        </div>
+        <input type="submit" class="btn btn-success" value="OK">
     </form>
     <br>
     <hr>
     <br>
-    <a href="/airports">go to Airports list</a>
-    <br>
-    <a href="/">go to Main page</a>
+    <div class="btn-group">
+        <a class="btn btn-outline-primary" href="/airports">Airports list</a>
+        <a class="btn btn-outline-primary" href="/">Main page</a>
+    </div>
 </div>
 <!-- Bootstrap script -->
 <script src="../webjars/bootstrap/4.6.0-1/js/bootstrap.js"

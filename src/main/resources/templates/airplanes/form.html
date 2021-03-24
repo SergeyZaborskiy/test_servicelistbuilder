@@ -42,13 +42,15 @@
 </nav>
 <!-- Body -->
 <div class="container">
-    <br>
+    <br/>
     <h1>Airplane form</h1>
-    <br>
+    <br/>
 
+    <!-- Thymeleaf main form -->
     <form th:action="@{/airplanes}" th:object="${airplane}" method="POST">
 
         <input type="hidden" th:field="*{id}">
+
         <!-- Airplane model -->
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Airplane model</span>
@@ -67,16 +69,15 @@
             <span class="input-group-text" id="basic-addon4">Maximum Passangers</span>
             <input type="text" class="form-control" th:field="*{maxNumberOfPassenger}" aria-describedby="basic-addon4">
         </div>
-        <input type="submit" value="OK">
+        <input type="submit" class="btn btn-success" value="OK">
     </form>
-
-
     <br>
     <hr>
     <br>
-    <a href="/airports">go to Airplane list</a>
-    <br>
-    <a href="/">go to Main page</a>
+    <div class="btn-group">
+        <a class="btn btn-outline-primary" href="/airplanes">Airplane list</a>
+        <a class="btn btn-outline-primary" href="/">Main page</a>
+    </div>
 </div>
 <!-- Bootstrap script -->
 <script src="../webjars/bootstrap/4.6.0-1/js/bootstrap.js"

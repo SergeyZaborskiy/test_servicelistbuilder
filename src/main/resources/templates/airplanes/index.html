@@ -46,7 +46,7 @@
     <h1>Airplanes user interface</h1>
     <br/>
     <hr>
-    <a href="/airplanes/new">Create new airplane</a>
+    <a class="btn btn-outline-primary" href="/airplanes/new" role="button">Create new airplane</a>
     <br/>
     <br/>
     <table class="table caption-top">
@@ -60,23 +60,25 @@
         </tr>
         <tr th:each="airplane:${airplanes}">
 
-            <td th:text = "${airplane.model}">VALUE</td>
-        <td th:text = "${airplane.mass}">VALUE</td>
-        <td th:text = "${airplane.maxFuelCapacity}">VALUE</td>
-        <td th:text = "${airplane.maxNumberOfPassenger}">VALUE</td>
-        <td>
-            <form th:action="@{/airplanes/{id}(id=${airplane.getId()})}" th:method="PUT">
-                <input type="submit" value="Edit">
-            </form>
-            <form th:action="@{/airplanes/{id}(id=${airplane.getId()})}" th:method="DELETE">
-                <input type="submit" value="Delete">
-            </form>
-        </td>
+            <td th:text="${airplane.model}">VALUE</td>
+            <td th:text="${airplane.mass}">VALUE</td>
+            <td th:text="${airplane.maxFuelCapacity}">VALUE</td>
+            <td th:text="${airplane.maxNumberOfPassenger}">VALUE</td>
+            <td>
+                <div class="btn-group">
+                    <form th:action="@{/airplanes/{id}(id=${airplane.getId()})}" th:method="PUT">
+                        <input class="btn btn-outline-success" type="submit" value="Edit">
+                    </form>
+                    <form th:action="@{/airplanes/{id}(id=${airplane.getId()})}" th:method="DELETE">
+                        <input class="btn btn-outline-danger" type="submit" value="Delete">
+                    </form>
+                </div>
+            </td>
         </tr>
     </table>
     <br>
     <hr>
-    <a href="/">Return to main page</a>
+    <a class="btn btn-outline-primary" href="/" role="button">Return to main page</a>
 </div>
 <!-- Bootstrap script -->
 <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.js" th:href="@{webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
