@@ -1,19 +1,21 @@
 package ru.spring.testing.servicelistbuilder.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="airports")
 public class Airport {
     //Primary key
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     //Variable
+    @Column(name="name")
     private String name;
+    @Column(name="icao")
     private String icao;
+    @Column(name="country")
     private String country;
 
     //Constructor

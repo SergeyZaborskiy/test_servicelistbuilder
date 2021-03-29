@@ -22,27 +22,26 @@ public class AirportService {
 
     //Show list of all airports in database
     @Transactional
-    public List<Airport> showAllAirportList(){
+    public List<Airport> showAllAirportList() {
         List<Airport> airportList = (List<Airport>) airportRepository.findAll();
-        return  airportList;
+        return airportList;
     }
 
     //Delete airport
     @Transactional
-    public void deleteAirport(Airport airport){
+    public void deleteAirport(Airport airport) {
         airportRepository.delete(airport);
     }
+
     @Transactional
-    public void deleteAirportById(long id){
+    public void deleteAirportById(long id) {
         airportRepository.deleteAirportById(id);
     }
 
     //Find airport by Id
     @Transactional
-    public Airport findAirportById(long id){
+    public Airport findAirportById(long id) {
         return airportRepository.findAirportById(id);
     }
-
-
 
 }

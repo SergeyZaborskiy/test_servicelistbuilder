@@ -1,31 +1,34 @@
 package ru.spring.testing.servicelistbuilder.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="airplanes")
 public class Airplane {
     //Primary key
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     //Variables
+    @Column(name="model")
     private String model;
+    @Column(name="mass")
     private String mass;
+    @Column(name="max_fuel_capacity")
     private int maxFuelCapacity;
-    private int maxNumberOfPassenger;
+    @Column(name="max_number_of_passengers")
+    private int maxNumberOfPassengers;
 
     //Constructors
     protected Airplane() {
     }
 
-    public Airplane(String model, String mass, int maxFuelCapacity, int maxNumberOfPassenger) {
+    public Airplane(String model, String mass, int maxFuelCapacity, int maxNumberOfPassengers) {
         this.model = model;
         this.mass = mass;
         this.maxFuelCapacity = maxFuelCapacity;
-        this.maxNumberOfPassenger = maxNumberOfPassenger;
+        this.maxNumberOfPassengers = maxNumberOfPassengers;
     }
 
 //Getters and Setters
@@ -62,11 +65,11 @@ public class Airplane {
         this.maxFuelCapacity = maxFuelCapacity;
     }
 
-    public int getMaxNumberOfPassenger() {
-        return maxNumberOfPassenger;
+    public int getMaxNumberOfPassengers() {
+        return maxNumberOfPassengers;
     }
 
-    public void setMaxNumberOfPassenger(int maxNumberOfPassenger) {
-        this.maxNumberOfPassenger = maxNumberOfPassenger;
+    public void setMaxNumberOfPassengers(int maxNumberOfPassengers) {
+        this.maxNumberOfPassengers = maxNumberOfPassengers;
     }
 }

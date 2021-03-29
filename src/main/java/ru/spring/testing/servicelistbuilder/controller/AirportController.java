@@ -17,7 +17,7 @@ public class AirportController {
     AirportService airportService;
 
     @GetMapping
-    public String showAirportsPage(Model model){
+    public String showAirportsPage(Model model) {
         List<Airport> airportList = airportService.showAllAirportList();
         model.addAttribute("airports", airportList);
         return "airports/index";
@@ -42,7 +42,7 @@ public class AirportController {
     }
 
     @PutMapping("/{id}")
-    public String findAirportById(@PathVariable long id, Model model){
+    public String findAirportById(@PathVariable long id, Model model) {
         Airport airport = airportService.findAirportById(id);
         model.addAttribute("airport", airport);
         return "airports/form";

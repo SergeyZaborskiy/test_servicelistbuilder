@@ -13,35 +13,7 @@
 
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Service builder</a>
-        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-                class="navbar-toggler"
-                data-target="#navbarResponsive"
-                data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Main Page
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/airports">Airports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/airplanes">Airplanes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/flightInfo">FlightInfo</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="fragments/header :: header">VALUE</div>
 <!-- Body -->
 <div class="container">
     <br/>
@@ -65,15 +37,15 @@
             <input class="form-control" th:field="*{numberOfPassengers}" type="text" aria-describedby="basic-addon3">
         </div>
         <label>Model of airplane</label>
-        <select class="custom-select" th:field="*{typeOfPlaneID}">
-            <option th:each="airplane:${airplanes}" th:selected="${airplane.id==typeOfPlaneID}"
+        <select class="custom-select" th:field="*{typeOfPlane}">
+            <option th:each="airplane:${airplanes}"
                     th:text="${airplane.model}"
                     th:value="${airplane.id}"></option>
         </select>
         <br/><br/>
         <label>Airport of arrival</label>
-        <select class="custom-select" th:field="*{airportOfArrivalID}">
-            <option th:each="airport:${airports}" th:selected="${airport.id==airportOfArrivalID}"
+        <select class="custom-select" th:field="*{airportOfArrival}">
+            <option th:each="airport:${airports}"
                     th:text="${airport.name} + ' ' + ${airport.icao}"
                     th:value="${airport.id}">
             </option>

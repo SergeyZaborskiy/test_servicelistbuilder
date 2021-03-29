@@ -12,37 +12,7 @@
 
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Service builder</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Main Page
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/airports">Airports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/airplanes">Airplanes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/flightInfo">FlightInfo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/operations">Operations</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="fragments/header :: header">VALUE</div>
 <!-- Body -->
 <div class="container">
     <br/>
@@ -53,9 +23,11 @@
     <p>1.Users</p>
     <p>2.Personal Information</p>
     <p>3.Airplane Maintenance</p>
-    <p>4.FlightInfo</p>
-    <p>5.Airplane models</p>
-    <p>6.Airports</p>
+    <a href="/api/flightInfos">4.FlightInfo - show all FlightInfo</a>
+    <br>
+    <a href="/api/airplanes">5.Airplane models - show all Airplane models</a>
+    <br>
+    <a href="/api/airports">6.Airports - show all Airport list</a>
 </div>
 <!-- Bootstrap script -->
 <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.js" th:href="@{webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>

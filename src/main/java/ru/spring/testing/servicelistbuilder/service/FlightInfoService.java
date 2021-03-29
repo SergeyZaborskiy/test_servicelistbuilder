@@ -15,7 +15,7 @@ public class FlightInfoService {
     FlightInfoRepository flightInfoRepository;
 
     @Transactional
-    public  List<FlightInfo> showAllFlightInfoList() {
+    public List<FlightInfo> showAllFlightInfoList() {
         List<FlightInfo> returnedList = (List<FlightInfo>) flightInfoRepository.findAll();
         return returnedList;
 
@@ -27,12 +27,13 @@ public class FlightInfoService {
     }
 
     @Transactional
-    public FlightInfo findFlightInfoById(long id){
+    public FlightInfo findFlightInfoById(long id) {
         return flightInfoRepository.findById(id);
     }
 
     @Transactional
-    public void deleteFlightInfoById(long id){
+    public void deleteFlightInfoById(long id) {
         flightInfoRepository.deleteById(id);
     }
+
 }

@@ -12,34 +12,7 @@
 
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Service builder</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Main Page
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/airports">Airports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/airplanes">Airplanes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/flightInfo">FlightInfo</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="fragments/header :: header">VALUE</div>
 <!-- Body -->
 <div class="container">
     <br/>
@@ -48,13 +21,32 @@
     <hr>
     <a class="btn btn-outline-primary" href="/operations/new" role="button">Create new operation group</a>
     <br/><br/>
-    <div th:each="operation:${operations}">
-        <p th:text="*{name}"/>
+    <div class="card" th:each="operation:${operations}">
+        <div class="card-header" th:text="${operation.name}">VALUE</div>
+        <div class="card-body">
+            <p>Список операций подгруппы</p>
+            <br>
+            <div class="btn-group">
+
+                <form th:action="@{/operations/{id}(id=${operation.getId()})}" th:method="PUT">
+                    <input class="btn btn-outline-success" type="submit" value="Edit Operation">
+                </form>
+                <form th:action="@{/operations/{id}/suboperation(id=${operation.getId()})}" th:method="PUT">
+                    <input class="btn btn-outline-success" type="submit" value="Edit SubOperation">
+                </form>
+                <form th:action="@{/operations/{id}(id=${operation.getId()})}" th:method="DELETE">
+                    <input class="btn btn-outline-danger" type="submit" value="Delete Operation">
+                </form>
+            </div>
+
+        </div>
     </div>
+    <br>
+    <hr>
+    <a class="btn btn-outline-primary" href="/" role="button">Return to main page</a>
 </div>
-<hr>
-<br/>
-<a class="btn btn-outline-primary" href="/" role="button">Return to main page</a>
+
+
 <!-- Bootstrap script -->
 <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.js" th:href="@{webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
 </body>

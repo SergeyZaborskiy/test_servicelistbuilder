@@ -1,4 +1,4 @@
-package ru.spring.testing.servicelistbuilder.entity;
+package ru.spring.testing.servicelistbuilder.entity.user;
 
 
 import javax.persistence.Entity;

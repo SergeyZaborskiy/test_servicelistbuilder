@@ -13,6 +13,9 @@ import ru.spring.testing.servicelistbuilder.service.FlightInfoService;
 
 import java.util.List;
 
+/**
+ *
+ */
 @Controller
 @RequestMapping("/flightInfo")
 public class FlightInfoController {
@@ -25,29 +28,31 @@ public class FlightInfoController {
     AirplaneService airplaneService;
 
     @GetMapping
-    public String showFlightInfoPage(Model model){
+    public String showFlightInfoPage(Model model) {
         List<FlightInfo> flightInfoList = flightInfoService.showAllFlightInfoList();
         model.addAttribute("flightInfoList", flightInfoList);
         return "flightInfo/index";
     }
 
     @GetMapping("/new")
-    public String showFlightInfoForm(@ModelAttribute("flightInfo") FlightInfo flightInfo, Model model){
+    public String showFlightInfoForm(Model model) {
+        FlightInfo flightInfo = new FlightInfo();
+        model.addAttribute(flightInfo);
         model.addAttribute("airplanes", getAirplaneList());
         model.addAttribute("airports", getAirportList());
         return "flightInfo/form";
     }
 
     @PostMapping
-    public String addNewFlightInfo(@ModelAttribute("flightInfo") FlightInfo flightInfo, Model model){
-        flightInfo.setAirportOfArrival(airportService.findAirportById(flightInfo.getAirportOfArrivalID()));
-        flightInfo.setTypeOfPlane(airplaneService.findAirplaneById(flightInfo.getTypeOfPlaneID()));
+    public String addNewFlightInfo(@ModelAttribute("flightInfo") FlightInfo flightInfo, Model model) {
+        flightInfo.setAirportOfArrival(airportService.findAirportById(flightInfo.getAirportOfArrival().getId()));
+        flightInfo.setTypeOfPlane(airplaneService.findAirplaneById(flightInfo.getTypeOfPlane().getId()));
         flightInfoService.saveOrUpdate(flightInfo);
         return "redirect:/flightInfo";
     }
 
     @PutMapping("/{id}")
-    public String findFlightPlaneById(@PathVariable long id, Model model){
+    public String findFlightInfoById(@PathVariable long id, Model model) {
         FlightInfo returnedFlightInfo = flightInfoService.findFlightInfoById(id);
         model.addAttribute("flightInfo", returnedFlightInfo);
         model.addAttribute("airplanes", getAirplaneList());
@@ -56,17 +61,19 @@ public class FlightInfoController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteFlightInfoById(@PathVariable long id, Model model){
+    public String deleteFlightInfoById(@PathVariable long id, Model model) {
         flightInfoService.deleteFlightInfoById(id);
         return "redirect:/flightInfo";
     }
 
 
-    //other methods
-    private List<Airplane> getAirplaneList(){
-       return airplaneService.showAllAirplaneList();
+    //other private methods
+    private List<Airplane> getAirplaneList() {
+        return airplaneService.showAllAirplaneList();
     }
-    private List<Airport> getAirportList(){
+
+    private List<Airport> getAirportList() {
         return airportService.showAllAirportList();
     }
+
 }

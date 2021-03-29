@@ -2,7 +2,7 @@ package ru.spring.testing.servicelistbuilder.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.spring.testing.servicelistbuilder.entity.Operation;
+import ru.spring.testing.servicelistbuilder.entity.operation.Operation;
 import ru.spring.testing.servicelistbuilder.repository.OperationRepository;
 
 import javax.transaction.Transactional;
@@ -30,7 +30,7 @@ public class OperationService {
     }
 
     @Transactional
-    public void deleteOperationById(long id){
+    public void deleteOperationById(long id) {
         operationRepository.deleteById(id);
     }
 

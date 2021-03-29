@@ -24,24 +24,25 @@ public class AirplaneService {
 
     //Show list of all airplanes in database
     @Transactional
-    public List<Airplane> showAllAirplaneList(){
+    public List<Airplane> showAllAirplaneList() {
         List<Airplane> airportList = (List<Airplane>) airplaneRepository.findAll();
-        return  airportList;
+        return airportList;
     }
 
     //Delete airplane
     @Transactional
-    public void deleteAirplane(Airplane airplane){
+    public void deleteAirplane(Airplane airplane) {
         airplaneRepository.delete(airplane);
     }
+
     @Transactional
-    public void deleteAirplaneById(long id){
+    public void deleteAirplaneById(long id) {
         airplaneRepository.deleteAirplaneById(id);
     }
 
     //Find airplane by Id
     @Transactional
-    public Airplane findAirplaneById(long id){
+    public Airplane findAirplaneById(long id) {
         return airplaneRepository.findAirplaneById(id);
     }
 }

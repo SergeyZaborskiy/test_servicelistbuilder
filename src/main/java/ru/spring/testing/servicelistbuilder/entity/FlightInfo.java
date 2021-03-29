@@ -2,31 +2,46 @@ package ru.spring.testing.servicelistbuilder.entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "flight_infos")
 public class FlightInfo {
     //Primary key
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     //Variables
+    @Column(name = "route_id")
     private String routeID;
+
+    @Column(name = "time_of_parking")
     private int timeOfParking;
+
+    @Column(name = "number_of_passengers")
     private int numberOfPassengers;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "airport_of_arrival_id")
     private Airport airportOfArrival;
-    private long airportOfArrivalID;
-    @ManyToOne
+
+/*    @Column(name = "airport_of_arrival_id")
+    private long airportOfArrivalID;*/
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "airport_of_departure_id")
     private Airport airportOfDeparture;
-    private long airportOfDepartureID;
-    @ManyToOne
+
+/*    @Column(name = "airport_of_departure_id")
+    private long airportOfDepartureID;*/
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_of_plane_id")
     private Airplane typeOfPlane;
-    private long typeOfPlaneID;
+
+/*    @Column(name = "type_of_plane_id")
+    private long typeOfPlaneID;*/
 
 
     //Constructors
@@ -103,27 +118,4 @@ public class FlightInfo {
         this.typeOfPlane = typeOfPlane;
     }
 
-    public long getAirportOfArrivalID() {
-        return airportOfArrivalID;
-    }
-
-    public void setAirportOfArrivalID(long airportOfArrivalID) {
-        this.airportOfArrivalID = airportOfArrivalID;
-    }
-
-    public long getAirportOfDepartureID() {
-        return airportOfDepartureID;
-    }
-
-    public void setAirportOfDepartureID(long airportOfDepartureID) {
-        this.airportOfDepartureID = airportOfDepartureID;
-    }
-
-    public long getTypeOfPlaneID() {
-        return typeOfPlaneID;
-    }
-
-    public void setTypeOfPlaneID(long typeOfPlaneID) {
-        this.typeOfPlaneID = typeOfPlaneID;
-    }
 }

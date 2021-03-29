@@ -18,7 +18,7 @@ public class AirplanesController {
     AirplaneService airplaneService;
 
     @GetMapping
-    public String showAirplanePage(Model model){
+    public String showAirplanePage(Model model) {
         List<Airplane> airplaneList = airplaneService.showAllAirplaneList();
         model.addAttribute("airplanes", airplaneList);
         return "airplanes/index";
@@ -44,7 +44,7 @@ public class AirplanesController {
     }
 
     @PutMapping("/{id}")
-    public String findAirplaneById(@PathVariable long id, Model model){
+    public String findAirplaneById(@PathVariable long id, Model model) {
         Airplane airplane = airplaneService.findAirplaneById(id);
         model.addAttribute("airplane", airplane);
         return "airplanes/form";

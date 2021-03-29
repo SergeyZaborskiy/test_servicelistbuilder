@@ -1,12 +1,11 @@
-package ru.spring.testing.servicelistbuilder.entity;
+package ru.spring.testing.servicelistbuilder.entity.operation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-public class Operation {
+public class SubOperation {
     //Primary key
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,20 +13,22 @@ public class Operation {
 
     //Variables
     private String name;
-    @OneToMany
-    private List<SubOperation> subOperationList;
+    @ManyToOne
+    private Operation operation;
 
-    //Constructor
 
-    protected Operation() {
+    //Constructors
+
+    public SubOperation() {
     }
 
-    public Operation(String name, @Autowired List<SubOperation> subOperationList) {
+    public SubOperation(String name, @Autowired Operation operation) {
         this.name = name;
-        this.subOperationList = subOperationList;
+        this.operation = operation;
     }
 
     //Getters and Setters
+
 
     public long getId() {
         return id;
@@ -45,12 +46,11 @@ public class Operation {
         this.name = name;
     }
 
-    public List<SubOperation> getSubOperationList() {
-        return subOperationList;
+    public Operation getOperation() {
+        return operation;
     }
 
-    public void setSubOperationList(List<SubOperation> subOperationList) {
-        this.subOperationList = subOperationList;
+    public void setOperation(Operation operation) {
+        this.operation = operation;
     }
-
 }
