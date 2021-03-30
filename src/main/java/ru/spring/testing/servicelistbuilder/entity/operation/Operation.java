@@ -3,9 +3,11 @@ package ru.spring.testing.servicelistbuilder.entity.operation;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name="operations")
 public class Operation {
     //Primary key
     @Id
@@ -13,8 +15,9 @@ public class Operation {
     private long id;
 
     //Variables
+    @Column(name="name")
     private String name;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "operation")
     private List<SubOperation> subOperationList;
 
     //Constructor
@@ -51,6 +54,16 @@ public class Operation {
 
     public void setSubOperationList(List<SubOperation> subOperationList) {
         this.subOperationList = subOperationList;
+    }
+
+    //One-to-many execute
+    public void addSubOperationToOperation(SubOperation subOperation){
+        if (subOperationList==null){
+            subOperationList = new ArrayList<>();
+        } else {
+            subOperationList.add(subOperation);
+            subOperation.setOperation(this);
+        }
     }
 
 }

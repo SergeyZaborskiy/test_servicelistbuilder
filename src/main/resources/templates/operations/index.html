@@ -24,14 +24,15 @@
     <div class="card" th:each="operation:${operations}">
         <div class="card-header" th:text="${operation.name}">VALUE</div>
         <div class="card-body">
-            <p>Список операций подгруппы</p>
+            <div th:each="subOperation:${operation.getSubOperationList()}">
+                <p th:text="${subOperation.getName()}"/>
+            </div>
             <br>
             <div class="btn-group">
-
                 <form th:action="@{/operations/{id}(id=${operation.getId()})}" th:method="PUT">
                     <input class="btn btn-outline-success" type="submit" value="Edit Operation">
                 </form>
-                <form th:action="@{/operations/{id}/suboperation(id=${operation.getId()})}" th:method="PUT">
+                <form th:action="@{/operations/{id}/subs(id=${operation.getId()})}" th:method="PUT">
                     <input class="btn btn-outline-success" type="submit" value="Edit SubOperation">
                 </form>
                 <form th:action="@{/operations/{id}(id=${operation.getId()})}" th:method="DELETE">
@@ -45,8 +46,6 @@
     <hr>
     <a class="btn btn-outline-primary" href="/" role="button">Return to main page</a>
 </div>
-
-
 <!-- Bootstrap script -->
 <script src="webjars/bootstrap/4.6.0-1/js/bootstrap.js" th:href="@{webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
 </body>

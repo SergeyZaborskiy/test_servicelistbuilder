@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sub Operation user interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link type="text/css" rel="stylesheet" href="../../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css"
+          th:href="@{../../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}"/>
+    <script src="../../webjars/jquery/3.5.1/jquery.min.js" th:href="@{../../webjars/jquery/3.5.1/jquery.min.js}"></script>
+</head>
+
+
+<body>
+<!-- Navigation -->
+<div th:replace="fragments/header :: header">VALUE</div>
+<!-- Body -->
+<div class="container">
+    <br>
+    <H2>Sub Operation form</H2>
+    <br>
+    <form th:action="@{/operations/{id}/subs(id=${linkID})}" th:object="${subOperation}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <br>
+        <h3>Add new</h3>
+        <!-- Add new -->
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Name</span>
+            <input class="form-control" type="text" th:field="*{name}" aria-describedby="basic-addon1">
+        </div>
+        <input type="submit" class="btn btn-success" value="ADD">
+    </form>
+    <br>
+    <hr>
+    <br>
+
+    <br>
+    <hr>
+    <br>
+    <div class="btn-group">
+        <a class="btn btn-outline-primary" href="/operations">Operation list</a>
+        <a class="btn btn-outline-primary" href="/">Main page</a>
+    </div>
+</div>
+<!-- Bootstrap script -->
+<script src="../../webjars/bootstrap/4.6.0-1/js/bootstrap.js"
+        th:href="@{../../webjars/bootstrap/4.6.0-1/js/bootstrap.js}"></script>
+</body>
+</html>

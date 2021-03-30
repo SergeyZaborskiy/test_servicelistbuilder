@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 
 @Entity
+@Table(name="suboperations")
 public class SubOperation {
     //Primary key
     @Id
@@ -12,8 +13,11 @@ public class SubOperation {
     private long id;
 
     //Variables
+    @Column(name="name")
     private String name;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="operation_id")
     private Operation operation;
 
 
@@ -22,13 +26,12 @@ public class SubOperation {
     public SubOperation() {
     }
 
-    public SubOperation(String name, @Autowired Operation operation) {
+    public SubOperation(String name, Operation operation) {
         this.name = name;
         this.operation = operation;
     }
 
     //Getters and Setters
-
 
     public long getId() {
         return id;

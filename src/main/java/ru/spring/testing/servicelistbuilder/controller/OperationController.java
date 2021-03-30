@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.spring.testing.servicelistbuilder.entity.operation.Operation;
+import ru.spring.testing.servicelistbuilder.entity.operation.SubOperation;
 import ru.spring.testing.servicelistbuilder.service.OperationService;
 
 import java.util.List;
@@ -33,4 +34,36 @@ public class OperationController {
         operationService.saveOrUpdate(operation);
         return "redirect:/operations";
     }
+
+    @PutMapping("/{id}")
+    public String findOperationById(@PathVariable long id, Model model) {
+        Operation returnedOperation = operationService.findOperationById(id);
+        model.addAttribute("operation", returnedOperation);
+        return "operations/form";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteOperationById(@PathVariable long id, Model model) {
+        operationService.deleteOperationById(id);
+        return "redirect:/operations";
+    }
+
+    @PutMapping("/{id}/subs")
+    public String showSubOperationsInOperationById(@PathVariable long id, Model model) {
+        SubOperation subOperation = new SubOperation();
+        model.addAttribute("linkID", id);
+        model.addAttribute("subOperation", subOperation);
+        return "operations/subs/form";
+    }
+
+    @PostMapping("/{id}/subs")
+    public String addSubOperationInOperationById(@PathVariable long id,
+                                                 @ModelAttribute("subOperation") SubOperation subOperation,
+                                                 Model model) {
+        Operation returnedOperation = operationService.findOperationById(id);
+        returnedOperation.addSubOperationToOperation(subOperation);
+        operationService.saveOrUpdate(returnedOperation);
+        return "redirect:/operations";
+    }
+
 }
