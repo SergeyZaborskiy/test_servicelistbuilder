@@ -3,6 +3,7 @@ package ru.spring.testing.servicelistbuilder.entity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "flight_infos")
@@ -20,6 +21,25 @@ public class FlightInfo {
     private int timeOfParking;
     @Column(name = "number_of_passengers")
     private int numberOfPassengers;
+    @Column(name = "regular_passengers")
+    private int regularPassengers;
+    @Column(name = "bussines_passengers")
+    private int bussinesPassengers;
+    @Column(name = "number_of_mail")
+    private int numberOfMail;
+    @Column(name = "number_of_baggage")
+    private int numberOfBaggage;
+    @Column(name="stock_fuel")
+    private int stockFuel;
+    @Column(name="required_fuel")
+    private int requiredFuel;
+    @Column(name="route_type")
+    private String routeType;
+    @Column(name="date_of_takeoff")
+    private Date dateOfTakeoff;
+    @Column(name="date_of_landing")
+    private Date dateOflanding;
+
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "airport_of_arrival_id")
