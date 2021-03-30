@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link type="text/css" rel="stylesheet" href="../../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css"
           th:href="@{../../webjars/bootstrap/4.6.0-1/css/bootstrap.min.css}"/>
-    <script src="../../webjars/jquery/3.5.1/jquery.min.js" th:href="@{../../webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script src="../../webjars/jquery/3.5.1/jquery.min.js"
+            th:href="@{../../webjars/jquery/3.5.1/jquery.min.js}"></script>
 </head>
 
 
@@ -19,7 +20,7 @@
     <br>
     <H2>Sub Operation form</H2>
     <br>
-    <form th:action="@{/operations/{id}/subs(id=${linkID})}" th:object="${subOperation}" method="POST">
+    <form th:action="@{/operations/{id}/subs(id=${linkID})}" th:object="${newSubOperation}" method="POST">
         <input type="hidden" th:field="*{id}">
         <br>
         <h3>Add new</h3>
@@ -33,7 +34,8 @@
     <br>
     <hr>
     <br>
-
+    <!-- Show all -->
+    
     <br>
     <hr>
     <br>

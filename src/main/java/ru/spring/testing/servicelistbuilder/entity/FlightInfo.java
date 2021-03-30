@@ -12,13 +12,12 @@ public class FlightInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
     //Variables
     @Column(name = "route_id")
     private String routeID;
-
     @Column(name = "time_of_parking")
     private int timeOfParking;
-
     @Column(name = "number_of_passengers")
     private int numberOfPassengers;
 
@@ -26,22 +25,13 @@ public class FlightInfo {
     @JoinColumn(name = "airport_of_arrival_id")
     private Airport airportOfArrival;
 
-/*    @Column(name = "airport_of_arrival_id")
-    private long airportOfArrivalID;*/
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "airport_of_departure_id")
     private Airport airportOfDeparture;
 
-/*    @Column(name = "airport_of_departure_id")
-    private long airportOfDepartureID;*/
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_of_plane_id")
     private Airplane typeOfPlane;
-
-/*    @Column(name = "type_of_plane_id")
-    private long typeOfPlaneID;*/
 
 
     //Constructors
@@ -57,8 +47,8 @@ public class FlightInfo {
         this.typeOfPlane = typeOfPlane;
     }
 
-    //Getters and setters
 
+    //Getters and setters
     public long getId() {
         return id;
     }
@@ -95,7 +85,6 @@ public class FlightInfo {
         return airportOfArrival;
     }
 
-    @Autowired
     public void setAirportOfArrival(Airport airportOfArrival) {
         this.airportOfArrival = airportOfArrival;
     }
@@ -104,7 +93,6 @@ public class FlightInfo {
         return airportOfDeparture;
     }
 
-    @Autowired
     public void setAirportOfDeparture(Airport airportOfDeparture) {
         this.airportOfDeparture = airportOfDeparture;
     }
@@ -113,7 +101,6 @@ public class FlightInfo {
         return typeOfPlane;
     }
 
-    @Autowired
     public void setTypeOfPlane(Airplane typeOfPlane) {
         this.typeOfPlane = typeOfPlane;
     }

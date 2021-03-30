@@ -26,21 +26,24 @@
 
         <!-- Airplane model -->
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Airplane model</span>
-            <input type="text" class="form-control" th:field="*{model}" aria-describedby="basic-addon1">
-        </div>
-        <!-- Airplane mass -->
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon2">Airplane mass</span>
-            <input type="text" class="form-control" th:field="*{mass}" aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Fuel capacity</span>
-            <input type="text" class="form-control" th:field="*{maxFuelCapacity}" aria-describedby="basic-addon3">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon4">Maximum Passangers</span>
-            <input type="text" class="form-control" th:field="*{maxNumberOfPassengers}" aria-describedby="basic-addon4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Model</span>
+                <input type="text" class="form-control" th:field="*{model}" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Mass</span>
+                <input type="text" class="form-control" th:field="*{mass}" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon3">Fuel</span>
+                <input type="text" class="form-control" th:field="*{maxFuelCapacity}" aria-describedby="basic-addon3">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon4">Passangers</span>
+                <input type="text" class="form-control" th:field="*{maxNumberOfPassengers}"
+                       aria-describedby="basic-addon4">
+                <span class="input-group-text" id="basic-addon5">Baggage</span>
+                <input type="text" class="form-control" th:field="*{maxNumberOfBaggage}"
+                       aria-describedby="basic-addon5">
+            </div>
         </div>
         <input type="submit" class="btn btn-success" value="OK">
     </form>

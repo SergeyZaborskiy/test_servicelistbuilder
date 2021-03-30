@@ -7,37 +7,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="operations")
+@Table(name = "operations")
 public class Operation {
     //Primary key
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+
     //Variables
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
+    @Column(name = "normative_duration")
+    private int normativeDuration;
+    @Column(name = "actual_duration")
+    private int actualDuration;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "operation")
     private List<SubOperation> subOperationList;
 
+
     //Constructor
-
-    protected Operation() {
+    public Operation() {
     }
 
-    public Operation(String name, @Autowired List<SubOperation> subOperationList) {
+    public Operation(String name) {
         this.name = name;
-        this.subOperationList = subOperationList;
     }
+
 
     //Getters and Setters
-
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -56,10 +57,29 @@ public class Operation {
         this.subOperationList = subOperationList;
     }
 
-    //One-to-many execute
-    public void addSubOperationToOperation(SubOperation subOperation){
-        if (subOperationList==null){
+    public int getNormativeDuration() {
+        return normativeDuration;
+    }
+
+    public void setNormativeDuration(int normativeDuration) {
+        this.normativeDuration = normativeDuration;
+    }
+
+    public int getActualDuration() {
+        return actualDuration;
+    }
+
+    public void setActualDuration(int actualDuration) {
+        this.actualDuration = actualDuration;
+    }
+
+
+    //One-to-many initialization
+    public void addSubOperationToOperation(SubOperation subOperation) {
+        if (subOperationList == null) {
             subOperationList = new ArrayList<>();
+            subOperationList.add(subOperation);
+            subOperation.setOperation(this);
         } else {
             subOperationList.add(subOperation);
             subOperation.setOperation(this);

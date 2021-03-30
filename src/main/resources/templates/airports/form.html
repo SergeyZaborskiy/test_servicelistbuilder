@@ -39,6 +39,9 @@
         <input type="submit" class="btn btn-success" value="OK">
     </form>
     <br>
+    <h3>List of contractor</h3>
+    <p th:each="contractor:${airport.getContractors()}" th:text="${contractor.getName()}"/>
+    <br>
     <hr>
     <br>
     <div class="btn-group">

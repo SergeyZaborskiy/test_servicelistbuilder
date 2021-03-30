@@ -30,16 +30,12 @@
             <br>
             <div class="btn-group">
                 <form th:action="@{/operations/{id}(id=${operation.getId()})}" th:method="PUT">
-                    <input class="btn btn-outline-success" type="submit" value="Edit Operation">
-                </form>
-                <form th:action="@{/operations/{id}/subs(id=${operation.getId()})}" th:method="PUT">
-                    <input class="btn btn-outline-success" type="submit" value="Edit SubOperation">
+                    <input class="btn btn-outline-success" type="submit" value="Edit Group Name">
                 </form>
                 <form th:action="@{/operations/{id}(id=${operation.getId()})}" th:method="DELETE">
-                    <input class="btn btn-outline-danger" type="submit" value="Delete Operation">
+                    <input class="btn btn-outline-danger" type="submit" value="Delete Group">
                 </form>
             </div>
-
         </div>
     </div>
     <br>

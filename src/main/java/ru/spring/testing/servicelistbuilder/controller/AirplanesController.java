@@ -26,7 +26,7 @@ public class AirplanesController {
 
     @GetMapping("/new")
     public String showNewAirplaneForm(Model model) {
-        Airplane airplane = new Airplane(" ", " ", 0, 0);
+        Airplane airplane = new Airplane(" ", " ", 0, 0, 0);
         model.addAttribute("airplane", airplane);
         return "airplanes/form";
     }

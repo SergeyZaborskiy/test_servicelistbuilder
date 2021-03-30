@@ -51,8 +51,10 @@ public class OperationController {
     @PutMapping("/{id}/subs")
     public String showSubOperationsInOperationById(@PathVariable long id, Model model) {
         SubOperation subOperation = new SubOperation();
+        Operation returnedOperation = operationService.findOperationById(id);
         model.addAttribute("linkID", id);
-        model.addAttribute("subOperation", subOperation);
+        model.addAttribute("newSubOperation", subOperation);
+        model.addAttribute("operation", returnedOperation);
         return "operations/subs/form";
     }
 

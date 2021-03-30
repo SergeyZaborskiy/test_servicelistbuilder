@@ -27,8 +27,9 @@
         <tr>
             <th>Model</th>
             <th>Mass</th>
-            <th>maxFuelCapacity</th>
-            <th>maxNumberOfPassenger</th>
+            <th>Fuel</th>
+            <th>Passenger</th>
+            <th>Baggage</th>
             <th>Action</th>
         </tr>
         <tr th:each="airplane:${airplanes}">
@@ -37,6 +38,7 @@
             <td th:text="${airplane.mass}">VALUE</td>
             <td th:text="${airplane.maxFuelCapacity}">VALUE</td>
             <td th:text="${airplane.maxNumberOfPassengers}">VALUE</td>
+            <td th:text="${airplane.maxNumberOfBaggage}">VALUE</td>
             <td>
                 <div class="btn-group">
                     <form th:action="@{/airplanes/{id}(id=${airplane.getId()})}" th:method="PUT">
